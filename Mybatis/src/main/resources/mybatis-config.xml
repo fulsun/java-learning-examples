@@ -20,7 +20,8 @@
     <settings>
         <setting name="mapUnderscoreToCamelCase" value="true"/>
         <setting name="jdbcTypeForNull" value="NULL"/>
-
+        <!-- 显式指定使用 SLF4J 作为日志实现（可选，通常自动检测） -->
+        <setting name="logImpl" value="SLF4J"/>
         <!--显示的指定每个我们需要更改的配置的值，即使他是默认的。防止版本更新带来的问题  -->
         <setting name="lazyLoadingEnabled" value="true"/>
         <setting name="aggressiveLazyLoading" value="false"/>

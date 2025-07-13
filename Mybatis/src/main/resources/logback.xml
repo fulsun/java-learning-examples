@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false"> <!-- debug="true" 可查看 Logback 初始化日志 -->
+
+    <!-- 控制台输出（Console Appender） -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!-- 日志格式：时间 | 日志级别 | 类名 | 方法名 | 行号 | 日志内容 -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50}:%line - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 文件输出（File Appender，按天滚动） -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/mybatis.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/mybatis.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory> <!-- 保留30天的日志 -->
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50}:%line - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- MyBatis 专用 Logger（控制 MyBatis 日志级别） -->
+    <logger name="pers.fulsun.mybatis._01helloworld.Mapper" level="DEBUG" additivity="false">
+        <appender-ref ref="CONSOLE" /> <!-- 输出到控制台 -->
+        <appender-ref ref="FILE" />    <!-- 输出到文件 -->
+    </logger>
+
+    <!-- 根 Logger（默认级别为 INFO，覆盖未被显式配置的包） -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+    </root>
+
+</configuration>

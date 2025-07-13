@@ -4,6 +4,8 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pers.fulsun.mybatis._01helloworld.Mapper.UserMapper;
 import pers.fulsun.mybatis._01helloworld.pojo.User;
 
@@ -20,6 +22,7 @@ import java.io.InputStream;
  * 5.执行sql语句
  */
 public class MyBatisTest {
+    private static final Logger LOGGER = LoggerFactory.getLogger(MyBatisTest.class);
     public static void main(String[] args) throws IOException {
         // mybatis的全局配置文件：包含数据库连接池信息，事务管理器信息等...系统运行环境信息
         String resource = "mybatis-config.xml";
