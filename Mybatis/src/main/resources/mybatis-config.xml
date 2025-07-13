@@ -11,6 +11,7 @@
     <properties resource="dbconfig.properties"></properties>
 
 
+
     <!--
         2、settings包含很多重要的设置项
         setting:用来设置每一个设置项
@@ -45,6 +46,10 @@
 
         <!-- 3、批量起别名的情况下，使用@Alias注解为某个类型指定新的别名 -->
     </typeAliases>
+
+    <plugins>
+        <plugin interceptor="pers.fulsun.mybatis._01helloworld.plugin.MyFirstPlugin"/>
+    </plugins>
 
     <!--
         4、environments：环境们，mybatis可以配置多种环境 ,default指定使用某种环境。可以达到快速切换环境。
@@ -122,4 +127,5 @@
         <!-- 批量注册： -->
         <!--<package name="pers.fulsun.mybatis.dao"/>-->
     </mappers>
+
 </configuration>
